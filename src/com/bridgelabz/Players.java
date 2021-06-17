@@ -1,7 +1,7 @@
 /**
  * ****************************************************************************
  * Purpose: This is a Players class which is used to consider the number of
- *          players to play.
+ * players to play.
  *
  * @author Syeda Naziya
  * @version 1.0
@@ -16,18 +16,29 @@ import java.util.List;
 
 public class Players {
 
-    private static List<String> players = new ArrayList<String>();
+    private static List<String> _players = new ArrayList<String>();
 
     public static void add(String name) {
-        if (players.size() > 4) {
+        if (_players.size() > 4) {
             System.out.println("Max. of 4 players allowed to play.");
             return;
         }
-        players.add(name);
+        _players.add(name);
     }
 
     public static int numberOfPlayers() {
-        return players.size();
+        return _players.size();
+    }
+
+    public static String getPlayer(int index) {
+        return _players.get(index);
+    }
+
+    public static void Sequence(String[] players) {
+        for (int i = 0; i < players.length; i++) {
+            _players.set(i, players[i]);
+            System.out.println("Player-" + (i + 1) + ": " + players[i]);
+        }
     }
 
 }

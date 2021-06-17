@@ -1,8 +1,8 @@
 /**
  * ****************************************************************************
  * Purpose: This class all the methods used to initialize, shuffle, distribute
- *          print cards received by the players. This class helps the main method
- *          to call these methods any number of times.
+ * print cards received by the players. This class helps the main method
+ * to call these methods any number of times.
  *
  * @author Syeda Naziya
  * @version 1.0
