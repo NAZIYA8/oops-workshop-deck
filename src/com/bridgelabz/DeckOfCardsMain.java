@@ -11,13 +11,16 @@
 
 package com.bridgelabz;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class DeckOfCardsMain {
     static Scanner scanner = new Scanner(System.in);
+    static DeckOfCards deck = new DeckOfCards();
 
     public static void main(String[] args) {
-        DeckOfCards deck = new DeckOfCards();
+
         deck.initialize();
         Play();
     }
@@ -43,6 +46,7 @@ public class DeckOfCardsMain {
             Players.add(name);
         }
         Sequence();
+        Shuffle();
     }
 
     /**
@@ -68,5 +72,18 @@ public class DeckOfCardsMain {
         }
         Players.Sequence(players);
     }
-}
 
+    /**
+     * This method is used to Shuffle the cards.
+     * Each time we distribute the cards with the Player we shuffle the cards
+     */
+    static void Shuffle() {
+        List<Card> newList = new ArrayList<Card>();
+        while (deck.Cards.size() > 0) {
+            int index = (int) (Math.random() * deck.Cards.size());
+            newList.add(deck.Cards.get(index));
+            deck.Cards.remove(index);
+        }
+        deck.Cards = newList;
+    }
+}
