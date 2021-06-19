@@ -25,6 +25,10 @@ public class DeckOfCardsMain {
         Play();
     }
 
+    /**
+     * This method is used to add more Players
+     * and take the name of players.
+     */
     static void Play() {
         while (Players.numberOfPlayers() < 4) {
             if (Players.numberOfPlayers() >= 2) {
@@ -47,6 +51,10 @@ public class DeckOfCardsMain {
         Verify();
     }
 
+    /**
+     * This method to sequence the Players order and how they should receive the
+     * cards and further order for play.
+     */
     static void Sequence() {
         System.out.print("Enter the order of players:");
         for (int i = 0; i < Players.numberOfPlayers(); i++) {
@@ -67,6 +75,11 @@ public class DeckOfCardsMain {
         Players.Sequence(players);
     }
 
+
+    /**
+     * This method is used to Shuffle the cards.
+     * Each time we distribute the cards with the Player we shuffle the cards
+     */
     static void Shuffle() {
         List<Card> newList = new ArrayList<Card>();
         while (deck.Cards.size() > 0) {
@@ -78,6 +91,10 @@ public class DeckOfCardsMain {
         deck.Cards = newList;
     }
 
+    /**
+     * This method is used to distribute cards in order based on player sequence
+     * so that the player receives all 9 cards.
+     */
     static void Distribute() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < Players.numberOfPlayers(); j++) {
@@ -89,6 +106,10 @@ public class DeckOfCardsMain {
         }
     }
 
+    /**
+     * This method is to verify the each Player has got how many
+     * different types of cards.
+     */
     static void Verify() {
         for (int i = 0; i < Players.numberOfPlayers(); i++) {
             int[] cards = new int[4];
