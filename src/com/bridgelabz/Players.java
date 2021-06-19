@@ -16,29 +16,30 @@ import java.util.List;
 
 public class Players {
 
-    private static List<String> _players = new ArrayList<String>();
+    private static List<Player> _players = new ArrayList<Player>();
 
-    public static void add(String name) {
-        if (_players.size() > 4) {
+    public static void add(String name){
+        if(_players.size() > 4){
             System.out.println("Max. of 4 players allowed to play.");
             return;
         }
-        _players.add(name);
+        _players.add(new Player(name));
     }
 
-    public static int numberOfPlayers() {
+    public static int numberOfPlayers(){
         return _players.size();
     }
 
-    public static Player getPlayer(int index) {
+    public static Player getPlayer(int index){
         return _players.get(index);
     }
 
-    public static void Sequence(Player[] players) {
-        for (int i = 0; i < players.length; i++) {
-            _players.set(i, players[i]);
-            System.out.println("Player-" + (i + 1) + ": " + players[i]);
+    public static void Sequence(Player[] players){
+        for(int i=0; i< players.length; i++){
+            _players.set(i,players[i]);
+            System.out.println("Player " + (i+1) +": " + players[i].name);
         }
     }
+
 
 }

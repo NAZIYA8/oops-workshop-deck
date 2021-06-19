@@ -1,7 +1,7 @@
 /**
  * ****************************************************************************
  * Purpose: This class contains main method where the program execution is
- *          carried out.
+ * carried out.
  *
  * @author Syeda Naziya
  * @version 1.0
@@ -25,10 +25,6 @@ public class DeckOfCardsMain {
         Play();
     }
 
-    /**
-     * This method is used to add more Players
-     * and take the name of players.
-     */
     static void Play() {
         while (Players.numberOfPlayers() < 4) {
             if (Players.numberOfPlayers() >= 2) {
@@ -48,16 +44,13 @@ public class DeckOfCardsMain {
         Sequence();
         Shuffle();
         Distribute();
+        Verify();
     }
 
-    /**
-     * This method to sequence the Players order and how they should receive the
-     * cards and further order for play.
-     */
     static void Sequence() {
         System.out.print("Enter the order of players:");
         for (int i = 0; i < Players.numberOfPlayers(); i++) {
-            System.out.print(Players.getPlayer(i));
+            System.out.print(Players.getPlayer(i).name);
             if (i < Players.numberOfPlayers() - 1) {
                 System.out.print(", ");
             }
@@ -74,11 +67,6 @@ public class DeckOfCardsMain {
         Players.Sequence(players);
     }
 
-
-    /**
-     * This method is used to Shuffle the cards.
-     * Each time we distribute the cards with the Player we shuffle the cards
-     */
     static void Shuffle() {
         List<Card> newList = new ArrayList<Card>();
         while (deck.Cards.size() > 0) {
@@ -86,13 +74,10 @@ public class DeckOfCardsMain {
             newList.add(deck.Cards.get(index));
             deck.Cards.remove(index);
         }
+        System.out.println("Total cards: " + newList.size());
         deck.Cards = newList;
     }
 
-    /**
-     * This method is used to distribute cards in order based on player sequence
-     * so that the player receives all 9 cards.
-     */
     static void Distribute() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < Players.numberOfPlayers(); j++) {
@@ -103,4 +88,31 @@ public class DeckOfCardsMain {
             }
         }
     }
+
+    static void Verify() {
+        for (int i = 0; i < Players.numberOfPlayers(); i++) {
+            int[] cards = new int[4];
+            Player player = Players.getPlayer(i);
+            for (int j = 0; j < player.cards.size(); j++) {
+                String suit = player.cards.get(j).getSuite();
+                switch (suit) {
+                    case "Clubs":
+                        cards[0]++;
+                        break;
+                    case "Diamonds":
+                        cards[1]++;
+                        break;
+                    case "Hearts":
+                        cards[2]++;
+                        break;
+                    case "Spades":
+                        cards[3]++;
+                        break;
+                }
+            }
+            System.out.println("Player:" + player.name);
+            System.out.println("Clubs:" + cards[0] + ", Diamonds:" + cards[1] + ", Hearts:" + cards[2] + ", Spades:" + cards[3]);
+        }
+    }
 }
+
