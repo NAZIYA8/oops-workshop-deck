@@ -1,7 +1,7 @@
 /**
  * ****************************************************************************
  * Purpose: This class contains main method where the program execution is
- * carried out.
+ *          carried out.
  *
  * @author Syeda Naziya
  * @version 1.0
@@ -47,6 +47,7 @@ public class DeckOfCardsMain {
         }
         Sequence();
         Shuffle();
+        Distribute();
     }
 
     /**
@@ -64,7 +65,7 @@ public class DeckOfCardsMain {
         System.out.println();
         String sequence = scanner.nextLine();
         String[] seq = sequence.split(",");
-        String[] players = new String[Players.numberOfPlayers()];
+        Player[] players = new Player[Players.numberOfPlayers()];
         for (int i = 1; i <= Players.numberOfPlayers(); i++) {
             String c = seq[i - 1];
             Integer index = Integer.decode(c);
@@ -72,6 +73,7 @@ public class DeckOfCardsMain {
         }
         Players.Sequence(players);
     }
+
 
     /**
      * This method is used to Shuffle the cards.
@@ -85,5 +87,20 @@ public class DeckOfCardsMain {
             deck.Cards.remove(index);
         }
         deck.Cards = newList;
+    }
+
+    /**
+     * This method is used to distribute cards in order based on player sequence
+     * so that the player receives all 9 cards.
+     */
+    static void Distribute() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < Players.numberOfPlayers(); j++) {
+                Player player = Players.getPlayer(j);
+                Card card = deck.Cards.get(0);
+                player.cards.add(card);
+                deck.Cards.remove(0);
+            }
+        }
     }
 }

@@ -30,11 +30,11 @@ public class Players {
         return _players.size();
     }
 
-    public static String getPlayer(int index) {
+    public static Player getPlayer(int index) {
         return _players.get(index);
     }
 
-    public static void Sequence(String[] players) {
+    public static void Sequence(Player[] players) {
         for (int i = 0; i < players.length; i++) {
             _players.set(i, players[i]);
             System.out.println("Player-" + (i + 1) + ": " + players[i]);
