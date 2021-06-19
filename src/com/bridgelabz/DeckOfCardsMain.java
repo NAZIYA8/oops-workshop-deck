@@ -1,7 +1,7 @@
 /**
  * ****************************************************************************
  * Purpose: This class contains main method where the program execution is
- * carried out.
+ *          carried out.
  *
  * @author Syeda Naziya
  * @version 1.0
@@ -23,6 +23,10 @@ public class DeckOfCardsMain {
 
         deck.initialize();
         Play();
+        Sequence();
+        Shuffle();
+        Distribute();
+        Verify();
     }
 
     /**
@@ -45,10 +49,7 @@ public class DeckOfCardsMain {
             String name = scanner.nextLine();
             Players.add(name);
         }
-        Sequence();
-        Shuffle();
-        Distribute();
-        Verify();
+
     }
 
     /**
